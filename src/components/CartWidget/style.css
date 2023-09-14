@@ -1,0 +1,6 @@
+.carrito{
+    display: flex;
+    justify-content: right;
+    margin: 5px;
+    padding: 5px;
+}
