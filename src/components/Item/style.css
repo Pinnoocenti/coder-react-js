@@ -1,0 +1,21 @@
+.card{
+    font-family:'Courier New', Courier, monospace;
+    text-align:center;
+    margin: 20px;
+    padding: 10px;
+    width: 600px;
+}
+.boton{
+    font-family:'Courier New', Courier, monospace;
+    margin: 3px;
+    padding: 7px;
+    background-color: #d16f7b;
+    color: white;
+    font-size: medium;
+    border: #d16f7b;
+}
+.text{
+    width: 600px;
+    
+}
+    

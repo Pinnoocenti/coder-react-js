@@ -5,8 +5,8 @@
 
     return(
         <div className="carrito">
-            <img src={cart} alt="cart-widget"/>
-             <div> 0</div>
+         <img src={cart} alt="cart-widget"/>
+         <div> 0</div>
         </div>
     )
  }
