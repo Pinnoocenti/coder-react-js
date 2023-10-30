@@ -1,13 +1,12 @@
 import "./style.css"
 import { useState } from "react"
 
-const Contador = ({initial, stock, onAdd})=>{
+
+const Contador = ({initial, onAdd, disable})=>{
     const [quantity, setQuantity] = useState(0)
 
     const increment = () =>{
-        if (quantity < stock){
-            setQuantity (quantity+1)
-        }
+        setQuantity(quantity+1)
     }
     const decrement = ()=>{
         if(quantity >= 1){
@@ -15,14 +14,14 @@ const Contador = ({initial, stock, onAdd})=>{
         }
     }
     return(
-        <div className='Counter'> 
-            <div className='Controles'> 
+        <div className='counter'> 
+            <div className='controles'> 
                 <button className='boton' onClick={decrement}>-</button>
-                <h4 className='Number'>{quantity}</h4>
+                <h4 className='number'>{quantity}</h4>
                 <button className='boton' onClick={increment}>+</button>
             </div>
             <div>
-                <button className='boton' onClick={()=> onAdd(quantity)} disabled={!stock}>
+                <button className='boton' onClick={()=> onAdd(quantity)} disabled={disable || !quantity}>
                     Agregar al carrito
                 </button>
             </div>

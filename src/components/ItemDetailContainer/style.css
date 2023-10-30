@@ -1,0 +1,18 @@
+.botones{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    font-size: medium;
+    border: rgb(32, 32, 32);
+    margin: 7px;
+    padding: 5px;
+}
+.talleSeleccionado{
+    background-color: #d16f7b;
+    margin: 3px;
+    padding: 4px;
+}
+.colorSeleccionado{
+    background-color: #d16f7b;
+    margin: 3px;
+    padding: 4px;
+}

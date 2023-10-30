@@ -1,28 +1,57 @@
 import "./style.css"
 import { useState, useEffect } from "react"
-import { getProductById } from "../../data/data"
 import ItemDetail from "../ItemDetail/ItemDetail"
-import { useParams } from "react-router-dom"
+import {useParams } from "react-router-dom"
+import {getDoc, doc} from 'firebase/firestore'
+import { db } from "../.."
+
 
 const ItemDetailContainer = () => {
-    const [producto, setProducto]=useState(null)
+    const [colorSeleccionado, setColorSeleccionado] = useState('')
+    const [talleSeleccionado, setTalleSeleccionado] = useState('')
+    const [producto, setProducto]=useState({})
+    const [loading, setLoading]= useState(true)
     const {itemId} = useParams()
 
+    
+
     useEffect(()=>{
-        getProductById(itemId)
-        .then(res => {
-            console.log(res)
-            setProducto(res)
-        })
-        .catch(error => {
-            console.error(error)
-        })
-    }, [itemId])
+        setLoading(true)
+        
+        const docRef= doc(db, 'productos', itemId)
+        getDoc(docRef)
+            .then((res=>{
+                const data= res.data()
+                const colors= Object.keys(data.stock)
+                let tallesButtons
+                console.log(colorSeleccionado)
+                if (colorSeleccionado){
+                    const talles = data.stock[colorSeleccionado]
+                    tallesButtons= Object.keys(talles).map((talle, index)=>(
+                            <button className={talle === talleSeleccionado ? 'talleSeleccionado' : ''} disabled={talles[talle] <= 0} onClick={() => setTalleSeleccionado(talle)} key={index}>{talle}</button>
+                        ))
+                }
+
+                const colorButtons = colors.map((color, index)=>(
+                    <button className={color === colorSeleccionado ? 'colorSeleccionado': ''} onClick={() => setColorSeleccionado(color)} key={index}>{color}</button>
+                ))
+                
+                const productItem= {id: res.id, ...data, colorButtons, tallesButtons}
+                setProducto(productItem)
+            }))
+            .catch(error => {
+                console.error(error)
+            })
+            .finally(()=>{
+                setLoading(false)
+            })
+    }, [itemId, colorSeleccionado, talleSeleccionado])
 
     return(
         <div className="detalle">
-            <ItemDetail {...producto}/>
+            <ItemDetail producto={producto} colorSeleccionado={colorSeleccionado} talleSeleccionado={talleSeleccionado} />
         </div>
+        
     )
 
 

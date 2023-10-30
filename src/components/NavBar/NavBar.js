@@ -1,5 +1,5 @@
 import "./style.css"
-import OfeliaColor from '../../Images/OfeliaColor.png'
+import OfeliaColor from '../../images/OfeliaColor.png'
 import CartWidget from "../CartWidget/CartWidget"
 import { NavLink, Link } from "react-router-dom"
 
@@ -37,22 +37,6 @@ const NavBar = ()=>{
                         <li className="nav-item"
                             ><NavLink className="nav-link" to={`/categoria/mallas`}>Mallas</NavLink>
                             </li>
-                        
-
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Productos
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li><NavLink className="dropdown-item" to={`/categoria/calzas`}>Calzas</NavLink></li>
-                                <li><NavLink className="dropdown-item" to={`/categoria/pantalones`}>Pantalones</NavLink></li>
-                                <li><NavLink className="dropdown-item" to={`/categoria/shorts`}>Shorts</NavLink></li>
-                                <li><NavLink className="dropdown-item" to={`/categoria/tops`}>Tops</NavLink></li>
-                                <li><NavLink className="dropdown-item" to={`/categoria/remeras`}>Remeras</NavLink></li>
-                                <li><NavLink className="dropdown-item" to={`/categoria/abrigos`}>Abrigos</NavLink></li>
-                                <li><NavLink className="dropdown-item" to={`/categoria/mallas`}>Mallas</NavLink></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 .controles{
-    display: flex;
-    flex-direction: row;
+    display: inline-flex;
+    align-items: center;
+    
     
 }
 .boton{
@@ -8,5 +9,10 @@
     color: white;
     font-size: medium;
     border: #d16f7b;
-
+    margin: 10px;
+    padding: 7px;
+}
+.number{
+    margin: 10px;
+    padding: 7px;
 }
